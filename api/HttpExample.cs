@@ -15,13 +15,13 @@ namespace dotnet_60
         [FunctionName("HttpExample")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            ExecutionContext context,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
-string date = "2021-11-24T06:15:25.964Z";
-
-            return new OkObjectResult(date + "one two three four five six");
+            log.LogInformation("C# HTTP trigger function processed a request! :) ");
+            string message = File.ReadAllText("fjacnm");
+            return new OkObjectResult(message);
+        }  return new OkObjectResult(date + "one two three four five six");
         }
     }
 }
